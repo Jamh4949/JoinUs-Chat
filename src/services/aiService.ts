@@ -1,24 +1,26 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import Groq from "groq-sdk";
 import { ChatMessage } from "../models/meeting";
 import dotenv from "dotenv";
 
 dotenv.config();
 
-// Initialize Gemini API
-// Ensure you have GEMINI_API_KEY in your .env file
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
+// Initialize Groq API
+// Ensure you have GROQ_API_KEY in your .env file
+const groq = new Groq({
+    apiKey: process.env.GROQ_API_KEY || ""
+});
 
 /**
- * Generates a summary of the meeting chat using Google Gemini
+ * Generates a summary of the meeting chat using Groq AI (Llama model)
  * 
  * @param {ChatMessage[]} messages - Array of chat messages
  * @returns {Promise<string>} The generated summary
  */
 export const generateMeetingSummary = async (messages: ChatMessage[]): Promise<string> => {
     try {
-        if (!process.env.GEMINI_API_KEY) {
-            console.error("GEMINI_API_KEY is missing in environment variables");
-            return "Error de configuración: No se encontró la API Key de Gemini.";
+        if (!process.env.GROQ_API_KEY) {
+            console.error("GROQ_API_KEY is missing in environment variables");
+            return "Error de configuración: No se encontró la API Key de Groq.";
         }
 
         if (!messages || messages.length === 0) {
@@ -35,26 +37,31 @@ export const generateMeetingSummary = async (messages: ChatMessage[]): Promise<s
             })
             .join("\n");
 
-        // Use gemini-1.5-flash model which is faster and cheaper
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const prompt = `Actúa como un asistente virtual experto en resumir reuniones.
+A continuación se presenta la transcripción del chat de una reunión virtual.
+Por favor, genera un resumen conciso y estructurado de los puntos clave discutidos, 
+decisiones tomadas y tareas asignadas si las hay.
 
-        const prompt = `
-            Actúa como un asistente virtual experto en resumir reuniones.
-            A continuación se presenta la transcripción del chat de una reunión virtual.
-            Por favor, genera un resumen conciso y estructurado de los puntos clave discutidos, 
-            decisiones tomadas y tareas asignadas si las hay.
-            
-            Transcripción del chat:
-            ${chatTranscript}
-            
-            Resumen:
-        `;
+Transcripción del chat:
+${chatTranscript}
 
-        const result = await model.generateContent(prompt);
-        const response = await result.response;
-        const text = response.text();
+Resumen:`;
 
-        return text;
+        // Use Llama 3 model (fast and free)
+        const chatCompletion = await groq.chat.completions.create({
+            messages: [
+                {
+                    role: "user",
+                    content: prompt
+                }
+            ],
+            model: "llama3-8b-8192",
+            temperature: 0.7,
+            max_tokens: 1024
+        });
+
+        const summary = chatCompletion.choices[0]?.message?.content || "No se pudo generar el resumen.";
+        return summary;
     } catch (error: any) {
         console.error("Error generating meeting summary:", error);
         return `No se pudo generar el resumen. Detalles del error: ${error.message || JSON.stringify(error)}`;
