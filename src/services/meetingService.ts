@@ -127,6 +127,58 @@ export const getMeetingById = async (
 };
 
 /**
+ * Ends a meeting explicitly (by host)
+ * 
+ * @param {string} meetingId - Meeting ID
+ * @param {string} uid - User ID requesting to end the meeting
+ * @returns {Promise<{success: boolean, error?: string}>}
+ */
+export const endMeeting = async (
+    meetingId: string,
+    uid: string
+): Promise<{ success: boolean; error?: string }> => {
+    try {
+        const meeting = await getMeetingById(meetingId);
+
+        if (!meeting) {
+            return { success: false, error: "Meeting not found" };
+        }
+
+        // Verify ownership
+        if (meeting.createdBy !== uid) {
+            return { success: false, error: "Only the host can end the meeting" };
+        }
+
+        meeting.isActive = false;
+        activeMeetings.delete(meetingId);
+
+        // Generate summary immediately
+        if (meeting.messages && meeting.messages.length > 0) {
+            console.log(`🤖 Generating summary for ended meeting ${meetingId}...`);
+            generateMeetingSummary(meeting.messages)
+                .then(async (summary) => {
+                    await db.collection(COLLECTIONS.MEETINGS).doc(meetingId).update({
+                        summary: summary
+                    });
+                    console.log(`✅ Summary generated for meeting ${meetingId}`);
+                })
+                .catch(err => console.error("Error generating summary:", err));
+        }
+
+        // Update Firestore
+        await db.collection(COLLECTIONS.MEETINGS).doc(meetingId).update({
+            isActive: false,
+        });
+
+        console.log(`🛑 Meeting ${meetingId} ended by host ${uid}`);
+        return { success: true };
+    } catch (error) {
+        console.error("Error ending meeting:", error);
+        return { success: false, error: "Failed to end meeting" };
+    }
+};
+
+/**
  * Adds a participant to a meeting
  * 
  * @param {JoinMeetingData} data - Join meeting data

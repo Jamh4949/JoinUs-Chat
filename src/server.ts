@@ -17,6 +17,7 @@ import {
     createMeeting,
     joinMeeting,
     leaveMeeting,
+    endMeeting,
     addMessage,
     getParticipants,
 } from "./services/meetingService";
@@ -87,6 +88,34 @@ app.post("/api/meetings/create", async (req: Request, res: Response) => {
     } catch (error) {
         console.error("Error creating meeting:", error);
         res.status(500).json({ error: "Failed to create meeting" });
+    }
+});
+
+/**
+ * HTTP endpoint to end a meeting
+ * POST /api/meetings/end
+ */
+app.post("/api/meetings/end", async (req: Request, res: Response) => {
+    try {
+        const { meetingId, uid } = req.body;
+
+        if (!meetingId || !uid) {
+            return res.status(400).json({ error: "Missing required fields" });
+        }
+
+        const result = await endMeeting(meetingId, uid);
+
+        if (!result.success) {
+            return res.status(400).json({ error: result.error });
+        }
+
+        // Notify all participants that meeting ended
+        io.to(meetingId).emit("meeting-ended");
+
+        res.json({ success: true });
+    } catch (error) {
+        console.error("Error ending meeting:", error);
+        res.status(500).json({ error: "Failed to end meeting" });
     }
 });
 
@@ -172,6 +201,7 @@ io.on("connection", (socket: Socket) => {
                 meetingId,
                 participants: result.meeting!.participants,
                 messages: result.meeting!.messages,
+                createdBy: result.meeting!.createdBy,
             });
 
             // Notify other participants
