@@ -16,6 +16,11 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
  */
 export const generateMeetingSummary = async (messages: ChatMessage[]): Promise<string> => {
     try {
+        if (!process.env.GEMINI_API_KEY) {
+            console.error("GEMINI_API_KEY is missing in environment variables");
+            return "Error de configuración: No se encontró la API Key de Gemini.";
+        }
+
         if (!messages || messages.length === 0) {
             return "No hubo mensajes en esta reunión.";
         }
@@ -49,8 +54,8 @@ export const generateMeetingSummary = async (messages: ChatMessage[]): Promise<s
         const text = response.text();
 
         return text;
-    } catch (error) {
+    } catch (error: any) {
         console.error("Error generating meeting summary:", error);
-        return "No se pudo generar el resumen debido a un error en el servicio de IA.";
+        return `No se pudo generar el resumen. Detalles del error: ${error.message || JSON.stringify(error)}`;
     }
 };
