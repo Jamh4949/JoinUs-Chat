@@ -1,0 +1,108 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="./"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>joinus-chat</title><meta name="description" content="Documentation for joinus-chat"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script defer src="assets/main.js"></script><script async src="assets/icons.js" id="tsd-icons-script"></script><script async src="assets/search.js" id="tsd-search-script"></script><script async src="assets/navigation.js" id="tsd-nav-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="index.html" class="title">joinus-chat</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><h1>joinus-chat</h1></div><div class="tsd-panel tsd-typography"><h1 id="joinus-chat-server" class="tsd-anchor-link">JoinUs Chat Server<a href="#joinus-chat-server" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><p>Real-time chat server for JoinUs video conferencing platform using <a href="http://Socket.IO">Socket.IO</a> and Firebase Firestore.</p>
+<h2 id="features" class="tsd-anchor-link">Features<a href="#features" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li>✅ Real-time chat messaging</li>
+<li>✅ Meeting room management (2-10 users)</li>
+<li>✅ Firestore persistence</li>
+<li>✅ <a href="http://Socket.IO">Socket.IO</a> WebSocket communication</li>
+<li>✅ CORS support for Vercel deployment</li>
+<li>✅ TypeScript with strict typing</li>
+</ul>
+<h2 id="tech-stack" class="tsd-anchor-link">Tech Stack<a href="#tech-stack" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li><strong>Node.js</strong> + <strong>Express</strong></li>
+<li><strong><a href="http://Socket.IO">Socket.IO</a></strong> for real-time communication</li>
+<li><strong>Firebase Admin SDK</strong> for Firestore</li>
+<li><strong>TypeScript</strong> for type safety</li>
+</ul>
+<h2 id="installation" class="tsd-anchor-link">Installation<a href="#installation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><pre><code class="bash"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">install</span>
+</code><button type="button">Copy</button></pre>
+
+<h2 id="configuration" class="tsd-anchor-link">Configuration<a href="#configuration" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>Create a <code>.env</code> file based on <code>.env.example</code>:</p>
+<pre><code class="env">PORT=3001
+NODE_ENV=development
+CORS_ORIGIN=http://localhost:5173
+FIREBASE_PROJECT_ID=your-project-id
+FIREBASE_CLIENT_EMAIL=your-client-email
+FIREBASE_PRIVATE_KEY="your-private-key"
+</code><button type="button">Copy</button></pre>
+
+<h2 id="development" class="tsd-anchor-link">Development<a href="#development" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><pre><code class="bash"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">run</span><span class="hl-1"> </span><span class="hl-2">dev</span>
+</code><button type="button">Copy</button></pre>
+
+<h2 id="production-build" class="tsd-anchor-link">Production Build<a href="#production-build" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><pre><code class="bash"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">run</span><span class="hl-1"> </span><span class="hl-2">build</span><br/><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">start</span>
+</code><button type="button">Copy</button></pre>
+
+<h2 id="api-endpoints" class="tsd-anchor-link">API Endpoints<a href="#api-endpoints" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="http-endpoints" class="tsd-anchor-link">HTTP Endpoints<a href="#http-endpoints" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><h4 id="create-meeting" class="tsd-anchor-link">Create Meeting<a href="#create-meeting" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code><span class="hl-3">POST</span><span class="hl-1"> /</span><span class="hl-4">api</span><span class="hl-1">/</span><span class="hl-4">meetings</span><span class="hl-1">/</span><span class="hl-4">create</span><br/><span class="hl-5">Body</span><span class="hl-1">: { </span><span class="hl-5">createdBy</span><span class="hl-1">: </span><span class="hl-4">string</span><span class="hl-1">, </span><span class="hl-5">creatorName</span><span class="hl-1">: </span><span class="hl-4">string</span><span class="hl-1"> }</span><br/><span class="hl-5">Response</span><span class="hl-1">: { </span><span class="hl-5">success</span><span class="hl-1">: </span><span class="hl-6">true</span><span class="hl-1">, </span><span class="hl-5">meetingId</span><span class="hl-1">: </span><span class="hl-4">string</span><span class="hl-1">, </span><span class="hl-5">meeting</span><span class="hl-1">: </span><span class="hl-4">Meeting</span><span class="hl-1"> }</span>
+</code><button>Copy</button></pre>
+
+<h4 id="get-meeting-info" class="tsd-anchor-link">Get Meeting Info<a href="#get-meeting-info" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code><span class="hl-3">GET</span><span class="hl-1"> /</span><span class="hl-4">api</span><span class="hl-1">/</span><span class="hl-4">meetings</span><span class="hl-1">/:</span><span class="hl-4">meetingId</span><br/><span class="hl-5">Response</span><span class="hl-1">: { </span><span class="hl-5">success</span><span class="hl-1">: </span><span class="hl-6">true</span><span class="hl-1">, </span><span class="hl-5">participantCount</span><span class="hl-1">: </span><span class="hl-4">number</span><span class="hl-1">, </span><span class="hl-5">participants</span><span class="hl-1">: </span><span class="hl-4">Participant</span><span class="hl-1">[] }</span>
+</code><button>Copy</button></pre>
+
+<h3 id="socketio-events" class="tsd-anchor-link"><a href="http://Socket.IO">Socket.IO</a> Events<a href="#socketio-events" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><h4 id="client-→-server" class="tsd-anchor-link">Client → Server<a href="#client-→-server" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
+<li>
+<p><strong>join-meeting</strong>: Join a meeting room</p>
+<pre><code class="typescript"><span class="hl-1">{ </span><span class="hl-5">meetingId</span><span class="hl-1">: </span><span class="hl-4">string</span><span class="hl-1">, </span><span class="hl-5">uid</span><span class="hl-1">: </span><span class="hl-4">string</span><span class="hl-1">, </span><span class="hl-5">name</span><span class="hl-1">: </span><span class="hl-4">string</span><span class="hl-1"> }</span>
+</code><button type="button">Copy</button></pre>
+
+</li>
+<li>
+<p><strong>send-message</strong>: Send a chat message</p>
+<pre><code class="typescript"><span class="hl-1">{ </span><span class="hl-5">meetingId</span><span class="hl-1">: </span><span class="hl-4">string</span><span class="hl-1">, </span><span class="hl-5">text</span><span class="hl-1">: </span><span class="hl-4">string</span><span class="hl-1"> }</span>
+</code><button type="button">Copy</button></pre>
+
+</li>
+</ul>
+<h4 id="server-→-client" class="tsd-anchor-link">Server → Client<a href="#server-→-client" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
+<li>
+<p><strong>joined-meeting</strong>: Confirmation of joining</p>
+<pre><code class="typescript"><span class="hl-1">{ </span><span class="hl-5">meetingId</span><span class="hl-1">: </span><span class="hl-4">string</span><span class="hl-1">, </span><span class="hl-5">participants</span><span class="hl-1">: </span><span class="hl-4">Participant</span><span class="hl-1">[], </span><span class="hl-5">messages</span><span class="hl-1">: </span><span class="hl-4">ChatMessage</span><span class="hl-1">[] }</span>
+</code><button type="button">Copy</button></pre>
+
+</li>
+<li>
+<p><strong>user-joined</strong>: Another user joined</p>
+<pre><code class="typescript"><span class="hl-1">{ </span><span class="hl-5">uid</span><span class="hl-1">: </span><span class="hl-4">string</span><span class="hl-1">, </span><span class="hl-5">name</span><span class="hl-1">: </span><span class="hl-4">string</span><span class="hl-1">, </span><span class="hl-5">participantCount</span><span class="hl-1">: </span><span class="hl-4">number</span><span class="hl-1"> }</span>
+</code><button type="button">Copy</button></pre>
+
+</li>
+<li>
+<p><strong>user-left</strong>: User left the meeting</p>
+<pre><code class="typescript"><span class="hl-1">{ </span><span class="hl-5">name</span><span class="hl-1">: </span><span class="hl-4">string</span><span class="hl-1">, </span><span class="hl-5">participantCount</span><span class="hl-1">: </span><span class="hl-4">number</span><span class="hl-1"> }</span>
+</code><button type="button">Copy</button></pre>
+
+</li>
+<li>
+<p><strong>new-message</strong>: New chat message</p>
+<pre><code class="typescript"><span class="hl-1">{ </span><span class="hl-5">id</span><span class="hl-1">: </span><span class="hl-4">string</span><span class="hl-1">, </span><span class="hl-5">userId</span><span class="hl-1">: </span><span class="hl-4">string</span><span class="hl-1">, </span><span class="hl-5">userName</span><span class="hl-1">: </span><span class="hl-4">string</span><span class="hl-1">, </span><span class="hl-5">text</span><span class="hl-1">: </span><span class="hl-4">string</span><span class="hl-1">, </span><span class="hl-5">timestamp</span><span class="hl-1">: </span><span class="hl-4">Date</span><span class="hl-1"> }</span>
+</code><button type="button">Copy</button></pre>
+
+</li>
+<li>
+<p><strong>join-error</strong>: Error joining meeting</p>
+<pre><code class="typescript"><span class="hl-1">{ </span><span class="hl-5">message</span><span class="hl-1">: </span><span class="hl-4">string</span><span class="hl-1"> }</span>
+</code><button type="button">Copy</button></pre>
+
+</li>
+<li>
+<p><strong>error</strong>: General error</p>
+<pre><code class="typescript"><span class="hl-1">{ </span><span class="hl-5">message</span><span class="hl-1">: </span><span class="hl-4">string</span><span class="hl-1"> }</span>
+</code><button type="button">Copy</button></pre>
+
+</li>
+</ul>
+<h2 id="firestore-structure" class="tsd-anchor-link">Firestore Structure<a href="#firestore-structure" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="meetings-collection" class="tsd-anchor-link">meetings Collection<a href="#meetings-collection" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><pre><code class="typescript"><span class="hl-1">{</span><br/><span class="hl-1">  </span><span class="hl-5">meetingId</span><span class="hl-1">: </span><span class="hl-4">string</span><span class="hl-1">,          </span><span class="hl-7">// 6-digit ID</span><br/><span class="hl-1">  </span><span class="hl-5">createdBy</span><span class="hl-1">: </span><span class="hl-4">string</span><span class="hl-1">,          </span><span class="hl-7">// User UID</span><br/><span class="hl-1">  </span><span class="hl-5">createdAt</span><span class="hl-1">: </span><span class="hl-4">Timestamp</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-5">participants</span><span class="hl-1">: [</span><br/><span class="hl-1">    {</span><br/><span class="hl-1">      </span><span class="hl-4">uid:</span><span class="hl-1"> </span><span class="hl-4">string</span><span class="hl-1">,</span><br/><span class="hl-1">      </span><span class="hl-4">name:</span><span class="hl-1"> </span><span class="hl-4">string</span><span class="hl-1">,</span><br/><span class="hl-1">      </span><span class="hl-4">socketId:</span><span class="hl-1"> </span><span class="hl-4">string</span><span class="hl-1">,</span><br/><span class="hl-1">      </span><span class="hl-4">joinedAt:</span><span class="hl-1"> </span><span class="hl-4">Date</span><br/><span class="hl-1">    }</span><br/><span class="hl-1">  ],</span><br/><span class="hl-1">  </span><span class="hl-5">messages</span><span class="hl-1">: [</span><br/><span class="hl-1">    {</span><br/><span class="hl-1">      </span><span class="hl-4">id:</span><span class="hl-1"> </span><span class="hl-4">string</span><span class="hl-1">,</span><br/><span class="hl-1">      </span><span class="hl-4">userId:</span><span class="hl-1"> </span><span class="hl-4">string</span><span class="hl-1">,</span><br/><span class="hl-1">      </span><span class="hl-4">userName:</span><span class="hl-1"> </span><span class="hl-4">string</span><span class="hl-1">,</span><br/><span class="hl-1">      </span><span class="hl-4">text:</span><span class="hl-1"> </span><span class="hl-4">string</span><span class="hl-1">,</span><br/><span class="hl-1">      </span><span class="hl-4">timestamp:</span><span class="hl-1"> </span><span class="hl-4">Date</span><br/><span class="hl-1">    }</span><br/><span class="hl-1">  ],</span><br/><span class="hl-1">  </span><span class="hl-5">isActive</span><span class="hl-1">: </span><span class="hl-4">boolean</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-5">maxParticipants</span><span class="hl-1">: </span><span class="hl-4">number</span><span class="hl-1">     </span><span class="hl-7">// Default: 10</span><br/><span class="hl-1">}</span>
+</code><button type="button">Copy</button></pre>
+
+<h2 id="deployment-to-render" class="tsd-anchor-link">Deployment to Render<a href="#deployment-to-render" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ol>
+<li>Push code to GitHub repository</li>
+<li>Create new Web Service on Render</li>
+<li>Configure:
+<ul>
+<li><strong>Build Command</strong>: <code>npm install &amp;&amp; npm run build</code></li>
+<li><strong>Start Command</strong>: <code>npm start</code></li>
+<li><strong>Environment Variables</strong>: Add all from <code>.env</code></li>
+</ul>
+</li>
+<li>Deploy</li>
+</ol>
+<h2 id="license" class="tsd-anchor-link">License<a href="#license" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>ISC</p>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#joinus-chat-server"><span>Join<wbr/>Us <wbr/>Chat <wbr/>Server</span></a><ul><li><a href="#features"><span>Features</span></a></li><li><a href="#tech-stack"><span>Tech <wbr/>Stack</span></a></li><li><a href="#installation"><span>Installation</span></a></li><li><a href="#configuration"><span>Configuration</span></a></li><li><a href="#development"><span>Development</span></a></li><li><a href="#production-build"><span>Production <wbr/>Build</span></a></li><li><a href="#api-endpoints"><span>API <wbr/>Endpoints</span></a></li><li><ul><li><a href="#http-endpoints"><span>HTTP <wbr/>Endpoints</span></a></li><li><ul><li><a href="#create-meeting"><span>Create <wbr/>Meeting</span></a></li><li><a href="#get-meeting-info"><span>Get <wbr/>Meeting <wbr/>Info</span></a></li></ul></li><li><a href="#socketio-events"><span>Socket.<wbr/>IO <wbr/>Events</span></a></li><li><ul><li><a href="#client-→-server"><span>Client → <wbr/>Server</span></a></li><li><a href="#server-→-client"><span>Server → <wbr/>Client</span></a></li></ul></li></ul></li><li><a href="#firestore-structure"><span>Firestore <wbr/>Structure</span></a></li><li><ul><li><a href="#meetings-collection"><span>meetings <wbr/>Collection</span></a></li></ul></li><li><a href="#deployment-to-render"><span>Deployment to <wbr/>Render</span></a></li><li><a href="#license"><span>License</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="modules.html">joinus-chat</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>
