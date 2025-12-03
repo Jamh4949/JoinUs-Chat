@@ -22,7 +22,12 @@ export const generateMeetingSummary = async (messages: ChatMessage[]): Promise<s
 
         // Format messages for the prompt
         const chatTranscript = messages
-            .map(msg => `${msg.userName} (${msg.timestamp.toLocaleString()}): ${msg.text}`)
+            .map(msg => {
+                const time = msg.timestamp instanceof Date 
+                    ? msg.timestamp.toLocaleString() 
+                    : (msg.timestamp as any).toDate().toLocaleString();
+                return `${msg.userName} (${time}): ${msg.text}`;
+            })
             .join("\n");
 
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });

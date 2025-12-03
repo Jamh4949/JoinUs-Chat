@@ -110,7 +110,10 @@ export const getMeetingById = async (
             ...data,
             createdAt: data.createdAt instanceof Date ? data.createdAt : (data.createdAt as any).toDate(),
             participants: data.participants || [],
-            messages: data.messages || [],
+            messages: (data.messages || []).map((msg: any) => ({
+                ...msg,
+                timestamp: msg.timestamp instanceof Date ? msg.timestamp : (msg.timestamp as any).toDate()
+            })),
         };
 
         // Cache it
