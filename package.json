@@ -9,7 +9,7 @@
     "scripts": {
         "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
         "build": "tsc",
-    "doc": "typedoc --out docs src --entryPointStrategy expand",
+        "doc": "typedoc --out docs src --entryPointStrategy expand",
         "start": "node build/server.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
@@ -23,6 +23,7 @@
     "license": "ISC",
     "type": "commonjs",
     "dependencies": {
+        "@google/generative-ai": "^0.24.1",
         "cors": "^2.8.5",
         "dotenv": "^17.2.3",
         "express": "^5.1.0",

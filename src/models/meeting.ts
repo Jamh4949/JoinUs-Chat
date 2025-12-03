@@ -54,6 +54,8 @@ export interface Meeting {
     participants: Participant[];
     /** Chat message history */
     messages: ChatMessage[];
+    /** AI-generated summary of the chat */
+    summary?: string;
     /** Whether the meeting is active */
     isActive: boolean;
     /** Maximum number of participants allowed */

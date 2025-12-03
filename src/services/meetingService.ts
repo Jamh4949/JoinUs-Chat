@@ -9,6 +9,7 @@
 
 import { db, COLLECTIONS } from "../utils/firebase";
 import { generateMeetingId, isValidMeetingId } from "../utils/validation";
+import { generateMeetingSummary } from "./aiService";
 import type {
     Meeting,
     MeetingCreateData,
@@ -213,6 +214,20 @@ export const leaveMeeting = async (
         if (meeting.participants.length === 0) {
             meeting.isActive = false;
             activeMeetings.delete(meetingId);
+
+            // Generate summary if there are messages
+            if (meeting.messages && meeting.messages.length > 0) {
+                console.log(`🤖 Generating summary for meeting ${meetingId}...`);
+                // Run in background to not block the response
+                generateMeetingSummary(meeting.messages)
+                    .then(async (summary) => {
+                        await db.collection(COLLECTIONS.MEETINGS).doc(meetingId).update({
+                            summary: summary
+                        });
+                        console.log(`✅ Summary generated for meeting ${meetingId}`);
+                    })
+                    .catch(err => console.error("Error generating summary:", err));
+            }
         }
 
         // Update Firestore
