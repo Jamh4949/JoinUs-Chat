@@ -35,7 +35,8 @@ export const generateMeetingSummary = async (messages: ChatMessage[]): Promise<s
             })
             .join("\n");
 
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        // Use gemini-pro model which is stable and widely available
+        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
         const prompt = `
             Actúa como un asistente virtual experto en resumir reuniones.
